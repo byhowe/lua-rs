@@ -9,6 +9,7 @@ pub type size_t = usize;
 
 pub const MULTRET: i32 = ffi::LUA_MULTRET;
 
+#[derive(Debug)]
 #[repr(i32)]
 pub enum LuaOp
 {
@@ -42,6 +43,7 @@ pub enum LuaOp
   Shr = ffi::LUA_OPSHR as i32,
 }
 
+#[derive(Debug)]
 #[repr(i32)]
 pub enum LuaCmp
 {
@@ -165,6 +167,7 @@ impl From<i32> for LuaThreadStatus
   }
 }
 
+#[derive(Debug)]
 pub struct LuaDebug(ffi::lua_Debug);
 
 impl LuaDebug
@@ -409,6 +412,7 @@ pub type Number = ffi::lua_Number;
 
 pub type Integer = ffi::lua_Integer;
 
+#[derive(Debug)]
 pub struct LuaState
 {
   ptr: *mut RawLuaState,
