@@ -1,0 +1,13 @@
+[package]
+name = "lua-sys"
+version = "5.4.1"
+authors = ["B. Howe <37745048+byhowe@users.noreply.github.com>"]
+edition = "2018"
+
+[build-dependencies]
+pkg-config = { version = "0.3" }
+bindgen = { version = "0.55" }
+lua-src = { version = "5.4.1", path = "../lua-src" }
+
+[features]
+static = []

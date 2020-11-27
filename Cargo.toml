@@ -1,0 +1,6 @@
+[workspace]
+members = [
+  "lua",
+  "lua-sys",
+  "lua-src",
+]

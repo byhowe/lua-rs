@@ -1,0 +1,12 @@
+[package]
+name = "lua-src"
+version = "5.4.1"
+authors = ["B. Howe <37745048+byhowe@users.noreply.github.com>"]
+edition = "2018"
+
+[dependencies]
+openssl = "0.10"
+curl = "0.4"
+tar = "0.4"
+hex = "0.4"
+flate2 = "1.0"
