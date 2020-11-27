@@ -167,7 +167,6 @@ impl From<i32> for LuaThreadStatus
   }
 }
 
-#[derive(Debug)]
 pub struct LuaDebug(ffi::lua_Debug);
 
 impl LuaDebug
