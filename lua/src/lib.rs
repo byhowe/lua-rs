@@ -423,7 +423,9 @@ impl LuaState
     Self::l_newstate()
   }
 
-  fn from_ptr(l: *mut RawLuaState) -> Self
+  /// Creates a [`LuaState`] from [`*mut RawLuaState`].
+  /// Validity of the passed pointer must be checked by the caller.
+  pub unsafe fn from_ptr(l: *mut RawLuaState) -> Self
   {
     Self { ptr: l, owned: false }
   }
@@ -463,7 +465,7 @@ impl LuaState
   /// Threads are subject to garbage collection, like any Lua object.
   pub fn newthread(&self) -> Self
   {
-    Self::from_ptr(unsafe { ffi::lua_newthread(self.ptr) })
+    unsafe { Self::from_ptr(ffi::lua_newthread(self.ptr)) }
   }
 
   ///      int lua_resetthread (lua_State *L);
@@ -875,7 +877,7 @@ impl LuaState
     if l.is_null() {
       None
     } else {
-      Some(Self::from_ptr(l))
+      Some(unsafe { Self::from_ptr(l) })
     }
   }
 
@@ -1577,7 +1579,7 @@ impl LuaState
     where
       R: FnMut(&LuaState) -> &[u8],
     {
-      let state = LuaState::from_ptr(l);
+      let state = unsafe { LuaState::from_ptr(l) };
       let f: &mut R = unsafe { std::mem::transmute(ud) };
       let slice = f(&state);
       unsafe { *sz = slice.len() as _ };
