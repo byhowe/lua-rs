@@ -1,6 +1,7 @@
 [workspace]
 members = [
   "lua",
-  "lua-sys",
+  "lua-macros",
   "lua-src",
+  "lua-sys",
 ]
