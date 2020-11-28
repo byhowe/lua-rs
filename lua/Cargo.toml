@@ -6,6 +6,7 @@ edition = "2018"
 
 [dependencies]
 lua-sys = { version = "5.4.1", path = "../lua-sys" }
+libc = "0.2"
 
 [features]
 default = ["static"]

@@ -1,11 +1,8 @@
+use libc::{c_char, c_int, c_void, size_t};
 use lua_sys::ffi;
 use std::ffi::CStr;
 use std::ffi::CString;
-use std::os::raw::{c_char, c_int, c_void};
 use std::path::Path;
-
-#[allow(non_camel_case_types)]
-pub type size_t = usize;
 
 pub const MULTRET: i32 = ffi::LUA_MULTRET;
 
