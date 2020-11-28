@@ -1,5 +1,4 @@
 mod lua_type;
-mod lua_value;
 
 use libc::{c_char, c_int, c_void, size_t};
 use lua_sys::ffi;
@@ -7,8 +6,7 @@ use std::ffi::CStr;
 use std::ffi::CString;
 use std::path::Path;
 
-pub use lua_type::{Integer, LuaType, Number, Table, Unsigned};
-pub use lua_value::LuaValue;
+pub use lua_type::{Integer, LuaType, Number, Unsigned};
 
 pub const MULTRET: i32 = ffi::LUA_MULTRET;
 
@@ -656,6 +654,7 @@ impl LuaState
   ///
   /// Returns the name of the type encoded by the value `tp`, which must be one the values returned
   /// by `lua_type`.
+  #[deprecated = "Please use LuaType::to_string instead"]
   pub fn typename(&self, tp: LuaType) -> &str
   {
     let typename = unsafe { ffi::lua_typename(self.ptr, tp as _) };

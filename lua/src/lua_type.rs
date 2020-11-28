@@ -1,17 +1,11 @@
-use crate::LuaValue;
 use lua_sys::ffi;
+use std::fmt;
 
 pub type Unsigned = ffi::lua_Unsigned;
 
 pub type Number = ffi::lua_Number;
 
 pub type Integer = ffi::lua_Integer;
-
-#[derive(Debug)]
-pub struct Table
-{
-  elements: Vec<(LuaValue, LuaValue)>,
-}
 
 #[derive(Debug, Eq, PartialEq)]
 #[repr(i32)]
@@ -44,6 +38,29 @@ impl LuaType
   const THREAD: i32 = ffi::LUA_TTHREAD as i32;
 
   pub const NUMTYPES: u32 = 9;
+}
+
+impl fmt::Display for LuaType
+{
+  fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result
+  {
+    write!(
+      f,
+      "{}",
+      match self {
+        Self::None => "no value",
+        Self::Nil => "nil",
+        Self::Boolean => "boolean",
+        Self::LightUserdata => "userdata",
+        Self::Number => "number",
+        Self::String => "string",
+        Self::Table => "table",
+        Self::Function => "function",
+        Self::Userdata => "userdata",
+        Self::Thread => "thread",
+      }
+    )
+  }
 }
 
 impl From<i32> for LuaType
