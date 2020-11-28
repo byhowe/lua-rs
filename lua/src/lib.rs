@@ -1,5 +1,8 @@
 mod lua_type;
 
+#[doc(hidden)]
+pub use lua_macros::func;
+
 use libc::{c_char, c_int, c_void, size_t};
 use lua_sys::ffi;
 use std::ffi::CStr;
