@@ -7,7 +7,7 @@ pub type Number = ffi::lua_Number;
 
 pub type Integer = ffi::lua_Integer;
 
-#[derive(Debug, Eq, PartialEq)]
+#[derive(Debug, Copy, Clone, Eq, PartialEq)]
 #[repr(i32)]
 pub enum LuaType
 {
