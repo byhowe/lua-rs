@@ -1,4 +1,5 @@
 mod lua_type;
+mod lua_value;
 
 #[doc(hidden)]
 pub use lua_macros::func;
@@ -10,6 +11,7 @@ use std::ffi::CString;
 use std::path::Path;
 
 pub use lua_type::{Integer, LuaType, Number, Unsigned};
+pub use lua_value::{LuaValue, Table};
 
 pub const MULTRET: i32 = ffi::LUA_MULTRET;
 
