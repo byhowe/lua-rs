@@ -69,6 +69,51 @@ impl LuaValue
       val => panic!("called `LuaValue::unwrap_array` on a `{:?}` value", val),
     }
   }
+
+  #[inline]
+  pub const fn is_boolean(&self) -> bool
+  {
+    match self {
+      Self::Boolean(_) => true,
+      _ => false,
+    }
+  }
+
+  #[inline]
+  pub const fn is_integer(&self) -> bool
+  {
+    match self {
+      Self::Integer(_) => true,
+      _ => false,
+    }
+  }
+
+  #[inline]
+  pub const fn is_number(&self) -> bool
+  {
+    match self {
+      Self::Number(_) => true,
+      _ => false,
+    }
+  }
+
+  #[inline]
+  pub const fn is_string(&self) -> bool
+  {
+    match self {
+      Self::String(_) => true,
+      _ => false,
+    }
+  }
+
+  #[inline]
+  pub const fn is_table(&self) -> bool
+  {
+    match self {
+      Self::Table(_) => true,
+      _ => false,
+    }
+  }
 }
 
 impl LuaState
