@@ -38,6 +38,11 @@ impl LuaType
   const THREAD: i32 = ffi::LUA_TTHREAD as i32;
 
   pub const NUMTYPES: u32 = 9;
+
+  pub fn is_none_or_nil(&self) -> bool
+  {
+    *self == Self::None || *self == Self::Nil
+  }
 }
 
 impl fmt::Display for LuaType
